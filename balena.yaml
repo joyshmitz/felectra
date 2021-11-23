@@ -1,0 +1,34 @@
+name: felectra
+type: sw.application
+description: >-
+  Збирання метрик та логів з обладнання та приладів Telegtaf, IPsec IEC 60870-5-104
+  Raspberry Pi4-64
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/joyshmitz/felectra'
+  logo:
+    type: blob.asset
+    data:
+      url: >-
+        https://raw.githubusercontent.com/joyshmitz/felectra/master/logo.png
+data:
+  applicationEnvironmentVariables:
+    - VPN_IKEV2_ENCRYPTION=AES-256
+    - VPN_IKEV2_INTEGRITY=SHA-512
+    - VPN_IKEV2_DH_GROUP=14
+    - VPN_IKEV2_LIFETIME_C=86400
+    - VPN_IKEV2_PEER=your_vpn_server_private_ip
+    - VPN_IPSEC_ENCRYPTION=AES-256
+    - VPN_IPSEC_INTEGRITY=SHA-512
+    - VPN_IPSEC_PEER=your_vpn_server_public_ip
+    - VPN_PRE_SHARED_KEY=$32692347hsd;flgTgksjTue
+    - YOU_NET_SUBNET=10.176.64.0/24
+    - SERVER_PROXY_SCA=10.176.64.11
+  defaultDeviceType: raspberry4-64
+  supportedDeviceTypes:
+    - raspberrypi3-64
+    - raspberrypi4-64
+    - raspberrypicm4-ioboard
+version: 3.5.2
