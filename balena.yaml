@@ -1,4 +1,4 @@
-name: felectra
+name: "felectra"
 type: sw.application
 description: >-
   Збирання метрик та логів з обладнання та приладів Telegtaf, IPsec IEC 60870-5-104
