@@ -1,4 +1,4 @@
-# Программное обеспечение ГРИД КП для Linux (OpenWRT Debian 10:ARM)\Windows
+# Программное обеспечение ГРИД КП для Linux (OpenWRT19.01\Debian 10:AMD64\Debian 10:ARM\Windows)
 
 > для контроллеров ICPDAS LP-8821, LP-8781, MOXA, iRZ, Teleofis, компьютеров с ОС Linux\Windows
 
