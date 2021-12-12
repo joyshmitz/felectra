@@ -12,7 +12,7 @@
 3. Інструкція по установці проекта на пристрій використовуючи рішення Balena
 
 **Огляд docker-compose.yml**
-`version: '2'
+`version: '2'` <\br >
 `services:`
 ``
 `#TM Server`
