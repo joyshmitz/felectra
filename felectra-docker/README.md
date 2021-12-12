@@ -12,12 +12,13 @@
 3. Інструкція по установці проекта на пристрій використовуючи рішення Balena
 
 **Огляд docker-compose.yml**
-`version: '2'` <\br >
-`services:`
+```
+version: '2'
+services:
 ``
-`#TM Server`
-`  tm_server:`
-`    build:`
+#TM Server
+  tm_server:
+    build:`
       context: ./tm_cpps
       dockerfile: Dockerfile
     image: tm_cpps:latest
@@ -101,4 +102,5 @@ networks:
   app-network:
     driver: bridge
 volumes:
-    resin-data:`
+    resin-data:
+```
