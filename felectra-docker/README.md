@@ -9,7 +9,7 @@
    - connector_telegraf
 3. Інструкція по установці проекта на пристрій використовуючи рішення Balena
 
-**Огляд docker-compose.yml**
+#### Огляд docker-compose.yml
 ```
 version: '2'
 services:
@@ -104,7 +104,7 @@ volumes:
 ```
 Використана версія Docker Compose 2. Використано режим мережі в Docker overlay для розподілення мережі між декількома вузлами. Дзінатись більше [за посиланням на документацію Docker](https://docs.docker.com/network/overlay/).
 
-**Огляд Dockerfile контейнерів**
+#### Огляд Dockerfile контейнерів
 
 **TM Server**
 ```
@@ -178,3 +178,47 @@ sleep 1
 done
 ```
 start-container - елементарний скрипт який допомагає запустити Docker контейнер tm_server. Спочатку скрипт запускає процес tm_server, а потім падає в цикл зі "сном" і припиняє свою дію.
+
+**ipsec**
+```
+FROM balenalib/raspberrypi4-64-alpine
+
+RUN apk add strongswan xl2tpd ppp; rm -rf /var/cache/apk/*
+
+ADD conf/ conf/docker-entrypoint.sh /opt/src/
+
+ENTRYPOINT ["/opt/src/docker-entrypoint.sh"]
+```
+Контенейр ipsec створений на основі образу balenalib/raspberrypi4-64-alpine. Даний блок команд Docker відповідає за встановлення Strongswan і інакших необіхдіних пакетів ``RUN apk add strongswan xl2tpd ppp; rm -rf /var/cache/apk/*``. Також відбувається поміщення файлів з в папки conf в Docker контейнер ipsec. Для запуску контейнера викорситаний скрипт docker-entrypoint.sh. 
+
+**connector_telegraf**
+```
+FROM balenalib/raspberrypi4-64-debian:buster
+
+RUN apt update && apt upgrade -y && \
+    apt install wget git -y
+
+RUN curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+RUN echo "deb https://repos.influxdata.com/debian buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+
+RUN printf "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
+RUN chmod +x /usr/sbin/policy-rc.d
+
+RUN sudo apt update && \
+    sudo apt-get install -y telegraf
+
+RUN RUNLEVEL=1 dpkg --configure -a
+
+COPY telegraf.conf /etc/telegraf/telegraf.conf
+
+ENV UDEV=1
+
+CMD ["balena-idle"]
+```
+Docker контейнер connector_telegraf створений на основі образу balenalib/raspberrypi4-64-debian:buster. В даному блоці комнад Docker відбувається додавання репозиторію в контйнер: ``RUN curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -``, ``RUN echo "deb https://repos.influxdata.com/debian buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list`` і встановлення telegraf з репозиторію. Всі інші команди допоміжні.
+
+#### Інструкція по установці проекта на пристрій використовуючи рішення Balena
+Для початку роботи з docker-compose і balena вам потрібно встановити Balena CLI [Дізнатись більше за посиланням](https://github.com/balena-io/balena-cli/blob/master/INSTALL.md).
+Після інсталяції Balena CLI вам потрібно прикріпити Fleet до випуску (release) [Дізнатись більше за посиланням](https://www.balena.io/docs/learn/deploy/release-strategy/release-policy/).
+Щоб виконати Deploy контейнер перейдіть в папку з проектом felectra-docker (якщо у вас відсутня папка - склонуйте з репозиторію) і виконайте:
+``balena push  <APP_NAME or DEVICE_IP>``
