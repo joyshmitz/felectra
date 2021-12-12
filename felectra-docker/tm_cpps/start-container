@@ -1,5 +1,4 @@
 #!/bin/bash
-mkdir -p /sys/firmware/devicetree/base/serial-number
 /opt/tm_cpps/bin/tm_server start
 while :
 do
