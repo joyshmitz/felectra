@@ -100,7 +100,7 @@ services:
 #Docker Networks
 networks:
   app-network:
-    driver: bridge
+    driver: overlay
 volumes:
     resin-data:
 ```
