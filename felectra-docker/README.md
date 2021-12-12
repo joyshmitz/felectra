@@ -1,6 +1,6 @@
-**Felectra Docker cointaners документація**
+# Felectra Docker cointaners документація
 
-**Вміст**
+## Вміст
 1. Огляд docker-compose.yml
 
 2. Огляд Dockerfile контейнерів
@@ -105,6 +105,7 @@ volumes:
 Використана версія Docker Compose 2. Використано режим мережі в Docker overlay для розподілення мережі між декількома вузлами. Дзінатись більше [за посиланням на документацію Docker](https://docs.docker.com/network/overlay/).
 
 **Огляд Dockerfile контейнерів**
+
 **TM Server**
 ```
 FROM balenalib/aarch64-debian:buster-build
@@ -157,7 +158,23 @@ RUN chmod +x /usr/local/bin/start-container
 ```
 В блоці команд наведеному вище відбувається поміщення .deb пакету tm_cpps_RPi4b64_13633.deb з хоста в директорію /tmp/1/ в Docker контейнер за допомогою команди ``ADD tm_cpps_RPi4b64_13633.deb /tmp/1/``. Також за допомогою команди ``ADD start-container /usr/local/bin/start-container`` поміщається скрипт start-container. 
 ```
+RUN mkdir -p /sys/firmware/devicetree/base/serial-number
 RUN dpkg -i /tmp/1/tm_cpps_RPi4b64_13633.deb
 RUN rm /tmp/tm_cpps/tm_server.pid
 ```
-Даний блок коду відповідає за інсталяцію пакету tm_cpps_RPi4b64_13633.deb і видалення pid процесу програми TM Server при збірці Docker контейнера.
+Даний блок команд відповідає за створення директорії ``/sys/firmware/devicetree/base/serial-number``, інсталяцію пакету tm_cpps_RPi4b64_13633.deb і видалення pid процесу програми TM Server при збірці Docker контейнера.
+```
+ENTRYPOINT ["start-container"]
+```
+Ця команда відповідає за запуск скрипта, що допомагоє запустити процес ``tm_serverd``
+
+**Огляд скрипта start-container**
+```
+#!/bin/bash
+/opt/tm_cpps/bin/tm_server start
+while :
+do
+sleep 1
+done
+```
+start-container - елементарний скрипт який допомагає запустити Docker контейнер tm_server. Спочатку скрипт запускає процес tm_server, а потім падає в цикл зі "сном" і припиняє свою дію.
