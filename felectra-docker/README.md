@@ -2,9 +2,7 @@
 
 **Вміст**
 1. Огляд docker-compose.yml
-   - tm_server
-   - ipsec
-   - connector_telegraf
+
 2. Огляд Dockerfile контейнерів
    - tm_server
    - ipsec
@@ -104,3 +102,62 @@ networks:
 volumes:
     resin-data:
 ```
+Використана версія Docker Compose 2. Використано режим мережі в Docker overlay для розподілення мережі між декількома вузлами. Дзінатись більше [за посиланням на документацію Docker](https://docs.docker.com/network/overlay/).
+
+**Огляд Dockerfile контейнерів**
+**TM Server**
+```
+FROM balenalib/aarch64-debian:buster-build
+LABEL io.balena.device-type="raspberrypi4-64"
+RUN echo "deb http://archive.raspberrypi.org/debian buster main ui" >>  /etc/apt/sources.list.d/raspi.list \
+	&& apt-key adv --batch --keyserver keyserver.ubuntu.com  --recv-key 0x82B129927FA3303E
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		less \
+		libraspberrypi-bin \
+		kmod \
+		nano \
+		net-tools \
+		ifupdown \
+		iputils-ping \
+		i2c-tools \
+		usbutils 
+
+ADD tm_cpps_RPi4b64_13633.deb /tmp/1/
+ADD start-container /usr/local/bin/start-container
+RUN chmod +x /usr/local/bin/start-container
+
+RUN dpkg -i /tmp/1/tm_cpps_RPi4b64_13633.deb
+RUN rm /tmp/tm_cpps/tm_server.pid
+
+ENTRYPOINT ["start-container"]
+```
+Для створення Docker контейнеру для програми TM Server було використано образ balenalib/aarch64-debian:buster-build. 
+
+```
+RUN echo "deb http://archive.raspberrypi.org/debian buster main ui" >>  /etc/apt/sources.list.d/raspi.list \
+	&& apt-key adv --batch --keyserver keyserver.ubuntu.com  --recv-key 0x82B129927FA3303E
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		less \
+		libraspberrypi-bin \
+		kmod \
+		nano \
+		net-tools \
+		ifupdown \
+		iputils-ping \
+		i2c-tools \
+		usbutils 
+```
+В даному блоці команд для контейнера Docker комнада ``RUN`` відповідає за запуск консольних команд Linux.
+```
+ADD tm_cpps_RPi4b64_13633.deb /tmp/1/
+ADD start-container /usr/local/bin/start-container
+RUN chmod +x /usr/local/bin/start-container
+```
+В блоці команд наведеному вище відбувається поміщення .deb пакету tm_cpps_RPi4b64_13633.deb з хоста в директорію /tmp/1/ в Docker контейнер за допомогою команди ``ADD tm_cpps_RPi4b64_13633.deb /tmp/1/``. Також за допомогою команди ``ADD start-container /usr/local/bin/start-container`` поміщається скрипт start-container. 
+```
+RUN dpkg -i /tmp/1/tm_cpps_RPi4b64_13633.deb
+RUN rm /tmp/tm_cpps/tm_server.pid
+```
+Даний блок коду відповідає за інсталяцію пакету tm_cpps_RPi4b64_13633.deb і видалення pid процесу програми TM Server при збірці Docker контейнера.
