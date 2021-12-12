@@ -13,11 +13,11 @@
 
 **Огляд docker-compose.yml**
 `version: '2'
-services:
-
-#TM Server
-  tm_server:
-    build:
+`services:`
+``
+`#TM Server`
+`  tm_server:`
+`    build:`
       context: ./tm_cpps
       dockerfile: Dockerfile
     image: tm_cpps:latest
