@@ -18,7 +18,6 @@ ADD tm_cpps_RPi4b64_13633.deb /tmp/1/
 ADD start-container /usr/local/bin/start-container
 RUN chmod +x /usr/local/bin/start-container
 
-RUN mkdir -p /sys/firmware/devicetree/base/serial-number
 RUN dpkg -i /tmp/1/tm_cpps_RPi4b64_13633.deb
 RUN rm /tmp/tm_cpps/tm_server.pid
 
