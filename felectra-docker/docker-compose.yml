@@ -84,6 +84,6 @@ services:
 #Docker Networks
 networks:
   app-network:
-    driver: overlay
+    driver: bridge
 volumes:
     resin-data:
