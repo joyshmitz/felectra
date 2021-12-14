@@ -4,4 +4,4 @@
 
 [![](https://balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/joyshmitz/felectra)
 
-[![](https://github.com/joyshmitz/felectra/blob/master/pictures/felectra-diagram.drawio.svg)]
+![](/pictures/felectra-diagram.drawio.svg)
