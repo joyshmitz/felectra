@@ -4,3 +4,4 @@
 
 ![felectra diagram](/pictures/felectra-diagram.drawio.svg)
 
+[Edit the diagram](https://www.draw.io/?mode=github)
