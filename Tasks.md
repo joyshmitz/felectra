@@ -10,3 +10,19 @@ __* Сбор метрик, логов, данных и передача на б�
 
 4. Опрос оборудования Modbus с помощью агента Telegraf https://github.com/influxdata/telegraf/blob/master/plugins/inputs/modbus/README.md
 
+
+
+Настройки протокола IPSec
+```con
+Тип VPN site to site IPsec/IKEv2
+    IKEv2 policy
+    Encription    AES-256
+    Integrity    SHA-512
+    DH group    14
+    Lifetime, с    86400
+    Peer    xxx.xxx.xxx.xxx
+IPsec polisy
+    Encription    AES-256
+    Integrity    SHA-512
+    Peer    xxx.xxx.xxx.xxx
+```
