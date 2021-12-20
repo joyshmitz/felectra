@@ -1,4 +1,4 @@
-# Felectra Docker cointaners документація
+# Felectra Docker contaners документація
 
 ## Вміст
 1. Огляд docker-compose.yml
