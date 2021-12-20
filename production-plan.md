@@ -124,22 +124,22 @@ API {{$ names.company.lower}} включает функции, которые п
 
 Для получения дополнительной информации об общих анти-шаблонах см. [ Анти-шаблоны, или как взломать ваши {{$ names.os.lower}} устройства ] [анти-шаблоны].
 
-[ ссылка на двигатель ]: {{$ links.engineSiteUrl}}
-[ docker-compose ]: https: //docs.docker.com/compose/overview/
-[ dev-vs-prod ]: / reference / OS / overview / 2.x / # development-vs-production-images
-[ локальный режим ]: / узнать / разработать / локальный режим
-[ Wi-Fi-подключение ]: {{$ links.githubOS}} / Wi-Fi-подключение
-[ supervisor-api ]: / ссылка / супервизор / supervisor-api / # patch-v1-device-host-config
-[ соавторы ]: / learn / manage / account / # флота-члена
-[ ssh ]: / узнать / управлять / ssh-доступ
-[ custom-logging ]: {{$ links.blogSiteUrl}} / how-to-create-a-custom-logging-system-for-long-log-retention /
-[ cli ]: / ссылка / cli
-[ предварительная загрузка ]: / ссылка / cli / # предварительная загрузка-изображение
-[ предварительная регистрация ]: / ссылка / cli / # устройство-регистр-парк
-[ постановочные-выпуски ]: {{$ links.githubLabs}} / постановочные-выпуски
-[ теги ]: / learn / manage / filters-tags / # device-tags
-[ esr-devices ]: / reference / OS / extended-support-release # поддерживаемые-устройства
-[ esr ]: / ссылка / OS / расширенная-поддержка-выпуск
-[ фильтры ]: / learn / manage / filters-tags / # фильтры-устройства
-[ анти-шаблоны ]: / узнать / больше / анти-шаблоны
-[ cli-advanced-masterclass ]: / learn / more / masterclasses / advanced-cli / # 5-предварительная загрузка-и-предварительная регистрация
+[engine-link]:{{ $links.engineSiteUrl }}
+[docker-compose]:https://docs.docker.com/compose/overview/
+[dev-vs-prod]:/reference/OS/overview/2.x/#development-vs-production-images
+[local-mode]:/learn/develop/local-mode
+[wifi-connect]:{{ $links.githubOS }}/wifi-connect
+[supervisor-api]:/reference/supervisor/supervisor-api/#patch-v1-device-host-config
+[collaborators]:/learn/manage/account/#fleet-members
+[ssh]:/learn/manage/ssh-access
+[custom-logging]:{{ $links.blogSiteUrl }}/how-to-create-a-custom-logging-system-for-longer-log-retention/
+[cli]:/reference/cli
+[preload]:/reference/cli/#preload-image
+[preregister]:/reference/cli/#device-register-fleet
+[staged-releases]:{{ $links.githubLabs }}/staged-releases
+[tags]:/learn/manage/filters-tags/#device-tags
+[esr-devices]:/reference/OS/extended-support-release#supported-devices
+[esr]:/reference/OS/extended-support-release
+[filters]:/learn/manage/filters-tags/#device-filters
+[anti-patterns]:/learn/more/anti-patterns
+[cli-advanced-masterclass]:/learn/more/masterclasses/advanced-cli/#5-preloading-and-preregistering
