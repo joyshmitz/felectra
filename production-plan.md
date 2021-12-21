@@ -178,22 +178,22 @@ API balena включает функции, которые позволяют [�
 
 Для получения дополнительной информации об общих анти-шаблонах см. [Анти-шаблоны, или как взломать устройства](https://www.balena.io/docs/learn/more/anti-patterns).
 
-[engine-link](https://www.balena.io/engine/?)
-[docker-compose]:<https://docs.docker.com/compose/overview/>
-[dev-vs-prod]:/reference/OS/overview/2.x/#development-vs-production-images
-[local-mode]:/learn/develop/local-mode
-[wifi-connect](https://github.com/balena-os/wifi-connect)
+[engine-link](https://www.balena.io/engine/?)\
+[docker-compose]:<https://docs.docker.com/compose/overview/>\
+[dev-vs-prod]:/reference/OS/overview/2.x/#development-vs-production-images\
+[local-mode]:/learn/develop/local-mode\
+[wifi-connect](https://github.com/balena-os/wifi-connect)\
 [supervisor-api]:/reference/supervisor/supervisor-api/#patch-v1-device-host-config
-[collaborators]:/learn/manage/account/#fleet-members
-[ssh]:/learn/manage/ssh-access
-[custom-logging]:{{ $links.blogSiteUrl }}/how-to-create-a-custom-logging-system-for-longer-log-retention/
-[cli]:/reference/cli
-[preload]:/reference/cli/#preload-image
-[preregister]:/reference/cli/#device-register-fleet
-[staged-releases]:{{ $links.githubLabs }}/staged-releases
-[tags]:/learn/manage/filters-tags/#device-tags
-[esr-devices]:/reference/OS/extended-support-release#supported-devices
-[esr]:/reference/OS/extended-support-release
-[filters]:/learn/manage/filters-tags/#device-filters
-[anti-patterns]:/learn/more/anti-patterns
-[cli-advanced-masterclass]:/learn/more/masterclasses/advanced-cli/#5-preloading-and-preregistering
+[collaborators]:/learn/manage/account/#fleet-members\
+[ssh]:/learn/manage/ssh-access\
+[custom-logging]:{{ $links.blogSiteUrl }}/how-to-create-a-custom-logging-system-for-longer-log-retention/\
+[cli]:/reference/cli\
+[preload]:/reference/cli/#preload-image\
+[preregister]:/reference/cli/#device-register-fleet\
+[staged-releases]:{{ $links.githubLabs }}/staged-releases\
+[tags]:/learn/manage/filters-tags/#device-tags\
+[esr-devices]:/reference/OS/extended-support-release#supported-devices\
+[esr]:/reference/OS/extended-support-release\
+[filters]:/learn/manage/filters-tags/#device-filters\
+[anti-patterns]:/learn/more/anti-patterns\
+[cli-advanced-masterclass]:/learn/more/masterclasses/advanced-cli/#5-preloading-and-preregistering\
