@@ -92,7 +92,7 @@ autoconnect=true
 
 [gsm]
 apn=staticip
-number=*99#
+number=
 password=
 username=
 
